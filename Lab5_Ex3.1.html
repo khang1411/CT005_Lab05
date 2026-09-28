@@ -3,132 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lợi ích của công nghệ số trong học tập</title>
-  <meta name="description" content="Khám phá những lợi ích của công nghệ số đối với việc học tập qua infographic và video.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Hồ sơ cá nhân</title>
+  <meta name="description" content="Hồ sơ cá nhân và các sản phẩm học tập.">
 
   <style>
     * { box-sizing: border-box; }
 
+    :root {
+      color-scheme: light;
+      --ink: #202b28;
+      --muted: #63716c;
+      --paper: #f1f4ed;
+      --surface: #fffefa;
+      --accent: #e85b42;
+      --line: #d9e0d7;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      padding: 32px 16px;
-      font-family: "Be Vietnam Pro", Arial, sans-serif;
-      color: #1238c9;
-      background: #f8fbff;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 8% 12%, #dce9df 0, transparent 32rem),
+        var(--paper);
+      font-family: Arial, sans-serif;
       line-height: 1.65;
     }
 
-    main {
-      width: min(100%, 1000px);
+    a { color: inherit; }
+
+    .shell {
+      width: min(1120px, calc(100% - 48px));
       margin: 0 auto;
-      text-align: center;
     }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 76px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand { color: var(--ink); }
+
+    .topbar a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.6fr);
+      gap: 48px;
+      align-items: end;
+      padding: 76px 0 68px;
+    }
+
+    .eyebrow, .section-kicker {
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
 
     h1 {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -0.03em;
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-family: Georgia, serif;
+      font-size: clamp(2.8rem, 7vw, 5.7rem);
+      font-weight: 400;
+      line-height: 1.04;
     }
 
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
+    h1 span {
+      color: var(--accent);
+      font-family: Arial, sans-serif;
     }
 
-    .description {
-      margin: 0 auto 24px;
-      max-width: 680px;
-      line-height: 1.75;
+    .lead {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
     }
 
-    .content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: start;
+    .profile {
+      padding: 0 0 4px 22px;
+      border-left: 2px solid var(--accent);
     }
 
-    .panel {
-      padding: 16px;
-      border-radius: 16px;
-      background: white;
-      box-shadow: 0 4px 18px #1238c91a;
-    }
+    .profile p { margin-bottom: 10px; }
 
-    .infographic {
+    .profile-label {
       display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .video {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
+    .profile-value { font-weight: 600; }
+
+    .work {
+      padding: 36px 0 72px;
+      border-top: 1px solid var(--line);
     }
 
-    .video iframe {
-      position: absolute;
-      inset: 0;
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      max-width: 340px;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project { min-width: 0; }
+
+    .project-media {
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #e4eae2;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .project-media img, .project-media iframe {
+      display: block;
       width: 100%;
       height: 100%;
       border: 0;
-      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .project-media.pdf iframe { background: white; }
+
+    .project-media.video { aspect-ratio: 16 / 9; }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      padding-top: 12px;
+    }
+
+    .project-meta h3 {
+      margin-bottom: 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .project-meta span {
+      color: var(--muted);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-underline-offset: 3px;
     }
 
     footer {
-      margin-top: 24px;
-      color: #555;
-      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.76rem;
     }
 
-    @media (max-width: 700px) {
-      .content { grid-template-columns: 1fr; }
+    @media (max-width: 760px) {
+      .intro { grid-template-columns: 1fr; gap: 28px; padding: 56px 0; }
+      .profile { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; }
+      .profile p { margin-bottom: 4px; }
+      .projects { grid-template-columns: 1fr 1fr; }
+      .project:last-child { grid-column: 1 / -1; }
+      .project:last-child .project-media { aspect-ratio: 16 / 9; }
+    }
+
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 32px, 1120px); }
+      .topbar { min-height: 64px; font-size: 0.68rem; }
+      .section-heading { display: block; }
+      .section-heading p { margin: 10px 0 0; }
+      .projects { grid-template-columns: 1fr; gap: 26px; }
+      .project:last-child { grid-column: auto; }
+      .project-media, .project:last-child .project-media { aspect-ratio: 4 / 3; }
+      .project-media.video { aspect-ratio: 16 / 9; }
+      footer { display: block; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Lợi ích của công nghệ số trong học tập</h1>
-    <p class="description">
-      Tìm hiểu cách công nghệ số giúp học mọi lúc, tiếp cận kho kiến thức phong phú
-      và tăng cường tương tác trong quá trình học.
-    </p>
+  <header class="shell topbar">
+    <a class="brand" href="#top">Hồ sơ cá nhân</a>
+    <a href="#san-pham">Sản phẩm học tập <span aria-hidden="true">&darr;</span></a>
+  </header>
 
-    <div class="content">
-      <section class="panel">
-        <h2>Infographic</h2>
-        <img
-          class="infographic"
-          src="Lab05_Ex2.1.png"
-          alt="Infographic về lợi ích của công nghệ số trong học tập"
-        >
-      </section>
+  <main class="shell" id="top">
+    <section class="intro" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">Giới thiệu cá nhân</p>
+        <h1 id="intro-title">Xin chào, mình là <span>Trần Nguyên Khang</span></h1>
+        <p class="lead">
+          Mình yêu thích khám phá công nghệ và cách những ý tưởng có thể trở thành
+          nội dung hữu ích. Đây là một vài sản phẩm mình thực hiện trong quá trình học tập.
+        </p>
+      </div>
+      <div class="profile" aria-label="Thông tin cá nhân">
+        <p><span class="profile-label">Họ và tên</span><span class="profile-value">Trần Nguyên Khang</span></p>
+        <p><span class="profile-label">MSSV</span><span class="profile-value">B2605421</span></p>
+        <p><span class="profile-label">Lớp</span><span class="profile-value">DI26D2A2</span></p>
+        <p><span class="profile-label">Chủ đề quan tâm</span><span class="profile-value">Công nghệ số trong học tập</span></p>
+      </div>
+    </section>
 
-      <section class="panel">
-        <h2>Video YouTube</h2>
-        <div class="video">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/0xje1UiP0TE"
-            title="Video về công nghệ số trong học tập"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
+    <section class="work" id="san-pham" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Chọn lọc · 03 sản phẩm</p>
+          <h2 id="work-title">Sản phẩm học tập</h2>
         </div>
-      </section>
-    </div>
+        <p>Cùng một chủ đề, được thể hiện qua tài liệu, hình ảnh và video.</p>
+      </div>
+
+      <div class="projects">
+        <article class="project">
+          <div class="project-media pdf">
+            <iframe src="Lab05_Ex1.2.pdf" title="Xem trước tài liệu PDF" loading="lazy"></iframe>
+          </div>
+          <div class="project-meta">
+            <h3>Tài liệu học tập</h3>
+            <span>PDF</span>
+          </div>
+          <a class="project-link" href="Lab05_Ex1.2.pdf" target="_blank" rel="noopener">Mở tài liệu</a>
+        </article>
+
+        <article class="project">
+          <div class="project-media">
+            <img src="Lab05_Ex2.1.png" alt="Infographic về lợi ích của công nghệ số trong học tập" loading="lazy">
+          </div>
+          <div class="project-meta">
+            <h3>Infographic</h3>
+            <span>PNG</span>
+          </div>
+          <a class="project-link" href="Lab05_Ex2.1.png" target="_blank" rel="noopener">Xem ảnh kích thước đầy đủ</a>
+        </article>
+
+        <article class="project">
+          <div class="project-media video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/0xje1UiP0TE"
+              title="Video về công nghệ số trong học tập"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="project-meta">
+            <h3>Video giới thiệu</h3>
+            <span>YouTube</span>
+          </div>
+          <a class="project-link" href="https://youtu.be/0xje1UiP0TE" target="_blank" rel="noopener">Xem trên YouTube</a>
+        </article>
+      </div>
+    </section>
 
     <footer>
-      Ghi chú bản quyền: Infographic ghi nhận Canva AI và Unsplash.
-      Video thuộc bản quyền của chủ sở hữu trên YouTube.
+      <span>Hồ sơ cá nhân</span>
+      <span>Infographic ghi nhận Canva AI và Unsplash. Video thuộc chủ sở hữu trên YouTube.</span>
     </footer>
   </main>
 </body>
